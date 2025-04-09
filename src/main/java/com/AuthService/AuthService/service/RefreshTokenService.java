@@ -1,7 +1,7 @@
 package com.AuthService.AuthService.service;
 
 import com.AuthService.AuthService.entities.RefreshToken;
-import com.AuthService.AuthService.entities.Userinfo;
+import com.AuthService.AuthService.entities.UserInfo;
 import com.AuthService.AuthService.repository.RefreshTokenRepository;
 import com.AuthService.AuthService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class RefreshTokenService {
     UserRepository userRepository;
 
     public RefreshToken createRefreshToken(String userName) {
-        Userinfo userInfoExtracted = userRepository.findByUserName(userName);
+        UserInfo userInfoExtracted = userRepository.findByUsername(userName);
         RefreshToken refreshToken = RefreshToken.builder()
                 .userInfo(userInfoExtracted)
                 .token(UUID.randomUUID().toString())

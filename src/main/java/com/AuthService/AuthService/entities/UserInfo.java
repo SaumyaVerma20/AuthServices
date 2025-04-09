@@ -16,11 +16,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="users")
-public class Userinfo  {
+public class UserInfo {
     @Id
     @Column(name="user_id")
     private String userId;
-    private String userName;
+
+   //@Column(name = "user_name")
+    private String username;
     private String password;
 
     @ManyToMany(fetch=FetchType.EAGER)

@@ -1,7 +1,7 @@
 package com.AuthService.AuthService.service;
 
 import com.AuthService.AuthService.entities.UserRole;
-import com.AuthService.AuthService.entities.Userinfo;
+import com.AuthService.AuthService.entities.UserInfo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,24 +10,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetails extends Userinfo implements UserDetails {
+public class CustomUserDetails extends UserInfo implements UserDetails {
 
     private String username;
     private String password;
-
-
     Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetails(Userinfo byUsername)
+    //Collection<? extends GrantedAuthority> authorities;
+   // private List<GrantedAuthority> authorities;
+
+
+    public CustomUserDetails(UserInfo byUsername)
     {
-        this.username = byUsername.getUserName();
+        this.username = byUsername.getUsername();
         this.password = byUsername.getPassword();
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        //List<GrantedAuthority> authorities = new ArrayList<>();
+        //this.authorities = new ArrayList<>();
+        List<GrantedAuthority> auths = new ArrayList<>();
         for(UserRole role : byUsername.getRoles())
         {
-            authorities.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
+            //authorities.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
+            auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
         }
-        this.authorities = authorities;
+        this.authorities = auths;
     }
 
     @Override

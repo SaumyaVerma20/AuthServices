@@ -32,7 +32,6 @@ public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsServiceImpl;
 
     @Bean
-    @Autowired
     public UserDetailsService userDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder)
     {
       return new UserDetailsServiceImpl(userRepository, passwordEncoder);
