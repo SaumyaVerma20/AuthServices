@@ -2,7 +2,6 @@ package com.AuthService.AuthService.controller;
 
 
 import com.AuthService.AuthService.entities.RefreshToken;
-import com.AuthService.AuthService.eventProducer.UserInfoProducer;
 import com.AuthService.AuthService.models.UserInfoDto;
 import com.AuthService.AuthService.response.JwtResponseDto;
 import com.AuthService.AuthService.service.JwtService;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 public class AuthController {
-
+    
 
     @Autowired
     private JwtService jwtService;
@@ -30,10 +29,6 @@ public class AuthController {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
-
-    @Autowired
-    private final UserInfoProducer userInfoProducer;
 
     @PostMapping("auth/v1/signup")
     public ResponseEntity signUp(@RequestBody UserInfoDto userInfoDto)  {

@@ -13,5 +13,5 @@ server.port=9898
 spring.kafka.producer.bootstrap-servers=localhost:9092
 spring.kafka.topic.name=userinfo
 spring.kafka.producer.key-serializer= org.apache.kafka.common.serialization.StringSerializer
-spring.kafka.producer.value-serializer= AutService.serializer.UserInfoSerializer
-spring.kafka.producer.properties.spring.json.type.mapping=auth:AuthService.model.UserInfoDto
+spring.kafka.producer.value-serializer= authservice.serializer.UserInfoSerializer
+spring.kafka.producer.properties.spring.json.type.mapping=auth:authservice.model.UserInfoDto
